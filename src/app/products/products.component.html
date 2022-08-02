@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>My Product</h1>
+    <button type="button" routerLink="/create-product">Create Product</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products;let ind = index">
+              <td>{{product.id}}}</td>
+              <td>{{product.productName}}</td>
+              <td>{{product.description}}</td>
+              <td>{{product.quantity}}</td>
+              <td>{{product.price}}</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="updateProdDetails(product.id)">Update</button>
+                <button type="button" class="btn btn-danger" (click)="deleteProductDetails(product.id,ind)">Delete</button>
+              </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -12,22 +12,42 @@ export class ProductsComponent implements OnInit {
  products:Product[] = [] ;
   constructor(private prodSvc:ProductService,private router:Router) { }
 
+
   ngOnInit(): void {
     this.getProductDetails();
   }
 
   getProductDetails(){
-    this.prodSvc.getProductDetails('products').subscribe(el=>{
-      if(Array.isArray(el)){
-        this.products = el ;
-      }
-      console.log(el);
-    },
-    error => {
-      console.log(error);
-      
-    })
+     this.prodSvc.getProductDetailsPrmose("products").then(el => {
+      this.products = el ;  
+    });
+
+    this.prodSvc.getProductDetailsObservables("products").subscribe(el => {
+       this.products = el ;
+    });
+
+    // this.prodSvc.getProductDetails('products').subscribe(el=>{
+    //   console.log("Success");
+    //   if(Array.isArray(el)){
+    //     this.products = el ;
+    //   }
+    //  // console.log(el);
+    // },
+    // error => {
+    //   console.log(error);
+    // },
+    // () => {
+    //   console.log("Call Complete");
+    // })
   }
+
+
+
+
+
+
+
+
 
   updateProdDetails(id:number){
    this.router.navigate(['update-product',id]);

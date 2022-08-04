@@ -18,6 +18,7 @@ export class CreateProductComponent implements OnInit {
     this.createForm();
     console.log(this.route);
     this.id = this.route.snapshot.params['productId'];
+    
     console.log('id', this.id);
     if (this.id) {
       this.actionName = 'Update';
